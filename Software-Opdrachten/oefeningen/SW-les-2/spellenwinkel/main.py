@@ -1,14 +1,13 @@
 from winkel import Winkel
-from spel import Spel
-
+import spel
 def main():
     winkel = Winkel("Speeleiland", 4)
 
-    spel1 = Spel("Catan", "strategie", 120)
-    spel2 = Spel("Monopoly", "bordspel", 90)
-    spel3 = Spel("Uno", "kaartspel", 30)
-    spel4 = Spel("Wingspan", "strategie", 40)
-    spel5 = Spel("Ganzenbord", "bordspel", 30)
+    spel1 = spel("Catan", "strategie", 120)
+    spel2 = spel("Monopoly", "bordspel", 90)
+    spel3 = spel("Uno", "kaartspel", 30)
+    spel4 = spel("Wingspan", "strategie", 40)
+    spel5 = spel("Ganzenbord", "bordspel", 30)
 
     print(spel1)  # Catan (strategie, 120 minuten)
 

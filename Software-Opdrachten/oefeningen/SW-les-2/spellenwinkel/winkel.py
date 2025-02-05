@@ -9,7 +9,6 @@ class Winkel:
     def voeg_spel_toe(self, spel: Spel):
         self.__spellen.append(spel)
         print(f"Spel {spel} toegevoegd aan de winkel")
-        print(self.__spellen)
 
     def geef_langste_spel(self):
         if not self.__spellen:
@@ -18,7 +17,7 @@ class Winkel:
             return max(self.__spellen, key=lambda spel: spel.get_speelduur())
 
     def __str__(self):
-        result = f"--- {self.__naam} --- \nCapaciteit: {self.__capaciteit} spellen \n"
+        result = f"\n--- {self.__naam} --- \nCapaciteit: {self.__capaciteit} spellen \n"
         for spel in self.__spellen:
             result += f"{spel} ({spel.get_categorie()}, {spel.get_speelduur()} minuten)\n"
         return result
