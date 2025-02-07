@@ -3,4 +3,4 @@ class Stap:
         self.__beschrijving = beschrijving
     
     def __str__(self):
-        return self.__beschrijving
+        return (f"{self.__beschrijving}")

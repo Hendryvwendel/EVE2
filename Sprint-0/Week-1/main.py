@@ -1,7 +1,7 @@
-import Receptenboek
-import Recept
-import Ingredient
-import Stap
+from Receptenboek import Receptenboek
+from Recept import Recept
+from Ingredient import Ingredient
+from Stap import Stap
 
 def main():
     receptenboek = Receptenboek()

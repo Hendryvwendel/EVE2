@@ -20,5 +20,5 @@ class Recept:
     def __str__(self):
         ingredienten = "\n".join(str(ingredient) for ingredient in self.__ingredient_list)
         stappen = "\n".join(str(stap) for stap in self.__stappen_list)
-        return (f"\n{self.__naam}: {self.__omschrijving}. \nIngredienten:\n{ingredienten}. \nStappen:\n{stappen}")
+        return (f"\n{self.__naam}: {self.__omschrijving}. \nIngredienten:\n{ingredienten}. \n\nStappen:\n{stappen}")
         
