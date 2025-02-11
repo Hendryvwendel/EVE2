@@ -14,6 +14,7 @@ class GameDAO:
             )
             self.cursor = self.con.cursor()
         except Error as e:
+            # If an error occurs, print the error
             print(f"Error connecting to MySQL: {e}")
             self.con = None
             self.cursor = None
@@ -28,6 +29,8 @@ class GameDAO:
             results = self.cursor.fetchall()
 
             games = []
+
+            # Loop through the results and create a Game object for each row
             for row in results:
                 game = Game(row[0], row[1], row[2], row[3], row[4])
                 games.append(game)
@@ -40,16 +43,18 @@ class GameDAO:
 
     def delete_all_games(self):
         try:
+            # Connect to the database
             self.connect_db()
             if self.con is None or self.cursor is None:
                 return
-
+            # Execute the SQL command to delete all games
             self.cursor.execute("DELETE FROM game")
             self.con.commit()
             self.close_connection()
 
             print("All games deleted")
         except Error as e:
+            # If an error occurs, print the error
             print(f"Error deleting games: {e}")
 
     def create_game(self, naam: str = None, genre: str = None, jaar: int = None, ontwikkelaar: str = None):
@@ -68,17 +73,20 @@ class GameDAO:
             if ontwikkelaar == None:
                 ontwikkelaar = input("Geef de ontwikkelaar van de game: ")
 
+            # Create the SQL command and execute
             sql = "INSERT INTO game (naam, genre, jaar, ontwikkelaar) VALUES (%s, %s, %s, %s)"
             val = (naam, genre, jaar, ontwikkelaar)
 
-            self.cursor.execute(sql, val)  # Execute the SQL command
+            self.cursor.execute(sql, val)
             self.con.commit()
             self.close_connection()
 
+            # Print the result
             print(f"Game {naam} created, this game is made by {ontwikkelaar} in {jaar} and is a {genre} game")
 
         except Error as e:
-            if e.errno == 1062:
+            # If an error occurs, print the error
+            if e.errno == 1062: # Error code for duplicate entry
                 print(f"Game {naam} already exists in database")
             else:
                 print(f"Error creating game: {e}")
@@ -90,8 +98,11 @@ class GameDAO:
                 return
             __oude_naam = oude_naam
 
+            # Ask which game to update if not given
             if __oude_naam == None:
                 __oude_naam = input("Geef de naam van de game die je wilt updaten: ")
+
+            # Ask for input if not given
             if naam == None:
                 naam = input("Geef de nieuwe naam van de game: ")
             if genre == None:
