@@ -1,0 +1,35 @@
+from gameDAO import GameDAO
+
+
+def main():
+    gameDAO = GameDAO()
+
+    gameDAO.create_game("Minecraft", "Sandbox", 2011, "Mojang")
+    gameDAO.create_game("League of Legends", "MOBA", 2009, "Riot Games")
+    gameDAO.create_game("World of Warcraft", "MMORPG", 2004, "Blizzard Entertainment")
+    gameDAO.create_game("Rocket League", "Sports", 2015, "Psyonix")
+    gameDAO.create_game("Among Us", "Social Deduction", 2018, "InnerSloth")
+    gameDAO.create_game("Valorant", "FPS", 2020, "Riot Games")
+    gameDAO.create_game("Fortnite", "Battle Royale", 2017, "Epic Games")
+    gameDAO.create_game("Apex Legends", "Battle Royale", 2019, "Respawn Entertainment")
+    gameDAO.create_game("Call of Duty: Warzone", "Battle Royale", 2020, "Infinity Ward")
+    gameDAO.create_game("Genshin Impact", "Action RPG", 2020, "miHoYo")
+    gameDAO.create_game("Cyberpunk 2077", "Action RPG", 2020, "CD Projekt")
+    gameDAO.create_game("The Witcher 3: Wild Hunt", "Action RPG", 2015, "CD Projekt")
+    gameDAO.create_game("The Elder Scrolls V: Skyrim", "Action RPG", 2011, "Bethesda Game Studios")
+    gameDAO.create_game("Terraria", "Sandbox", 2011, "Re-Logic")
+    gameDAO.create_game("Stardew Valley", "Simulation", 2016, "ConcernedApe")
+    gameDAO.create_game("The Sims 4", "Simulation", 2014, "Maxis")
+    gameDAO.create_game("Minecraft Dungeons", "Action RPG", 2020, "Mojang")
+    gameDAO.create_game("Hades", "Action RPG", 2020, "Supergiant Games")
+    gameDAO.create_game("Dead by Daylight", "Survival Horror", 2016, "Behaviour Interactive")
+    gameDAO.create_game("Phasmophobia", "Survival Horror", 2020, "Kinetic Games")
+    gameDAO.create_game("Resident Evil Village", "Survival Horror", 2021, "Capcom")
+    gameDAO.create_game("Outlast", "Survival Horror", 2013, "Red Barrels")
+    gameDAO.create_game("Amnesia: The Dark Descent", "Survival Horror", 2010, "Frictional Games")
+    gameDAO.create_game("Alien: Isolation", "Survival Horror", 2014, "Creative Assembly")
+    gameDAO.create_game("The Last of Us Part II", "Action-Adventure", 2020, "Naughty Dog")
+    gameDAO.create_game("Red Dead Redemption 2", "Action-Adventure", 2018, "Rockstar Games")
+    gameDAO.create_game("Assassin's Creed Valhalla", "Action-Adventure", 2020, "Ubisoft")
+                        
+main()
