@@ -63,9 +63,13 @@ class GameDAO:
             if self.con is None or self.cursor is None:
                 return
             
+            print("Vul de volgende vragen in . Voer 'exit' in om te stoppen")
+            
             # Ask for input if not given
             if naam == None:
                 naam = input("Geef de naam van de game: ") 
+                if naam == "exit":
+                    return
             if genre == None:
                 genre = input("Geef het genre van de game: ")
             if jaar == None:
