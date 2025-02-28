@@ -8,8 +8,11 @@ class Ingredient:
         self.__kcal = kcal
         self.__plantaardig_alternatief = None
 
-        self.__hoeveelheid = self.__hoeveelheid * self.__personen
-        self.__kcal = self.__kcal * self.__personen
+        self.__default_hoeveelheid = hoeveelheid
+        self.__default_kcal = kcal
+
+        self.__hoeveelheid = self.__default_hoeveelheid * self.__personen
+        self.__kcal = self.__default_kcal * self.__personen
 
     def set_hoeveelheid(self, hoeveelheid: float):
         self.__hoeveelheid = hoeveelheid
@@ -22,8 +25,8 @@ class Ingredient:
     
     def set_personen(self, personen: int):
         self.__personen = personen
-        self.__hoeveelheid = self.__hoeveelheid * self.__personen
-        self.__kcal = self.__kcal * self.__personen
+        self.__hoeveelheid = self.__default_hoeveelheid * self.__personen
+        self.__kcal = self.__default_kcal * self.__personen
 
     def set_plantaardig_alternatief(self, plantaardig_alternatief: Ingredient):
         self.__plantaardig_alternatief = plantaardig_alternatief

@@ -15,7 +15,7 @@ class Receptenboek:
         for recept in self.__recepten:
             if recept.get_naam() == naam:
                 return recept
-            else :
+            else:
                 return None
 
     def __str__(self):

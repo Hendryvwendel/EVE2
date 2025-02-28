@@ -1,13 +1,14 @@
 from Receptenboek import Receptenboek
 from Recept import Recept
-from Ingredient import Ingredient
 from Stap import Stap
-import time
+from Ingredient import Ingredient
 
-def main():
+
+
+def import_recepten():
     receptenboek = Receptenboek()
     
-    recept1 = Recept("Pasta", "Een heerlijke pasta met spek en room")
+    recept1 = Recept("Pasta Carbonara", "Een heerlijke pasta met spek en room")
     recept2 = Recept("Pasta Pesto", "Een heerlijke pasta met pesto en kip")
     recept3 = Recept("Pasta Bolognese", "Een heerlijke pasta met gehakt en tomatensaus")
     recept4 = Recept("Pizza Margherita", "Een heerlijke pizza met tomatensaus en kaas")
@@ -60,51 +61,3 @@ def main():
     receptenboek.voeg_recept_toe(recept6)
     receptenboek.voeg_recept_toe(recept7)
     receptenboek.voeg_recept_toe(recept8)
-
-
-    started = False
-    while True:
-        if started:
-            command = ""
-            if command == "":
-                print("Welkom bij het receptenboek!")
-                started = True
-                print("Dit zijn de recepten die je kan maken:")
-                time.sleep(1)
-                print(receptenboek.get_recepten_namen())
-                gekozen_recept = input("Welk recept wil je maken? ")
-                recept = receptenboek.get_recept(gekozen_recept)
-                
-                if recept == None:
-                    print("Dit recept bestaat niet.")
-                    time.sleep(1)
-                    command = input("Druk op enter om een ander recept te kiezen of typ 'stop' om te stoppen. ")
-                    if command == "stop":
-                        break
-                    else:
-                        continue
-                else:
-                    time.sleep(1)
-                    aantal_personen = int(input("Voor hoeveel personen wil je dit recept maken? "))
-
-                
-                    recept.set_personen(aantal_personen)
-
-                    print(f"Dit is het recept voor {gekozen_recept}:")
-                    print(recept)
-                    
-                    command = input("Druk op enter om een ander recept te kiezen of typ 'stop' om te stoppen. ")
-                    if command == "stop":
-                        break
-                    else:
-                        continue
-
-        else:
-            command = input("Druk op enter om te starten")
-            if command == "":
-                started = True
-                continue
-        time.sleep(1)
-if __name__ == "__main__":
-    main()
-    
