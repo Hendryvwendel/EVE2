@@ -28,8 +28,12 @@ class Ingredient:
         self.__hoeveelheid = self.__default_hoeveelheid * self.__personen
         self.__kcal = self.__default_kcal * self.__personen
 
+        if self.__plantaardig_alternatief != None:
+            self.__plantaardig_alternatief.set_personen(personen)
+
     def set_plantaardig_alternatief(self, plantaardig_alternatief: Ingredient):
         self.__plantaardig_alternatief = plantaardig_alternatief
+        self.__plantaardig_alternatief.set_personen(self.__personen)
     
     def get_plantaardig_alternatief(self):
         return self.__plantaardig_alternatief

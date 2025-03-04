@@ -18,6 +18,12 @@ class Recept:
     def get_naam(self):
         return self.__naam
     
+    def get_ingredienten(self):
+        return self.__ingredient_list
+
+    def get_stappen(self):
+        return self.__stappen_list
+    
     def get_personen(self):
         return self.__aantal_personen
     

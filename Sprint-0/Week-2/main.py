@@ -87,7 +87,6 @@ def main():
                     time.sleep(1)
                     aantal_personen = int(input("Voor hoeveel personen wil je dit recept maken? "))
 
-                
                     recept.set_personen(aantal_personen)
 
                     print(f"Dit is het recept voor {gekozen_recept}:")

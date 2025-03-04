@@ -3,6 +3,7 @@ import Recept
 class Receptenboek:
     def __init__(self):
         self.__recepten = []
+        print(self)
     
     def voeg_recept_toe(self, recept: Recept):
         self.__recepten.append(recept)
@@ -15,8 +16,11 @@ class Receptenboek:
         for recept in self.__recepten:
             if recept.get_naam() == naam:
                 return recept
-            else :
-                return None
+    
+    def verwijder_recept(self, naam: str):
+        for recept in self.__recepten:
+            if recept.get_naam() == naam:
+                self.__recepten.remove(recept)
 
     def __str__(self):
         recepten = "\n\n".join(str(recept) for recept in self.__recepten)
