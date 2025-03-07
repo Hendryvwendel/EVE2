@@ -4,9 +4,7 @@ from Ingredient import Ingredient
 from Stap import Stap
 import time
 
-def main():
-    receptenboek = Receptenboek()
-    
+def maak_receptenboek(receptenboek):
     recept1 = Recept("Pasta", "Een heerlijke pasta met spek en room")
     recept2 = Recept("Pasta Pesto", "Een heerlijke pasta met pesto en kip")
     recept3 = Recept("Pasta Bolognese", "Een heerlijke pasta met gehakt en tomatensaus")
@@ -61,49 +59,116 @@ def main():
     receptenboek.voeg_recept_toe(recept7)
     receptenboek.voeg_recept_toe(recept8)
 
-
-    started = False
+def voeg_recept_toe(receptenboek):
+    print("Voer de naam van het recept in:")
+    naam_recept = input()
+    print("Voer de beschrijving van het recept in:")
+    beschrijving_recept = input()
+    recept_toegevoegd = Recept(naam_recept, beschrijving_recept)
+    
     while True:
-        if started:
-            command = ""
-            if command == "":
-                print("Welkom bij het receptenboek!")
-                started = True
-                print("Dit zijn de recepten die je kan maken:")
-                time.sleep(1)
-                print(receptenboek.get_recepten_namen())
-                gekozen_recept = input("Welk recept wil je maken? ")
-                recept = receptenboek.get_recept(gekozen_recept)
-                
-                if recept == None:
-                    print("Dit recept bestaat niet.")
-                    time.sleep(1)
-                    command = input("Druk op enter om een ander recept te kiezen of typ 'stop' om te stoppen. ")
-                    if command == "stop":
-                        break
-                    else:
-                        continue
-                else:
-                    time.sleep(1)
-                    aantal_personen = int(input("Voor hoeveel personen wil je dit recept maken? "))
+        print("Voer de naam van het ingrediënt in: (typ stop om te stoppen)")
+        naam_ingredient = input()
+        if naam_ingredient == "stop":
+            break
+        print("Voer de hoeveelheid in:")
+        hoeveelheid = int(input())
+        print("Voer de eenheid in:")
+        eenheid = input()
+        print("Voer het aantal kcal in:")
+        kcal = int(input())
+        
+        ingredient_toegevoegd = Ingredient(naam_ingredient, hoeveelheid, eenheid, kcal)
+        recept_toegevoegd.voeg_ingredient_toe(ingredient_toegevoegd)
+        
+        print("Is voor dit ingredient een plantaardig alternatief? (ja/nee)")
+        if input().lower() == "ja":
+            print("Voer de naam van het plantaardig alternatief in:")
+            naam_ingredient_alternatief = input()
+            print("Voer de hoeveelheid in:")
+            hoeveelheid_alternatief = int(input())
+            print("Voer de eenheid in:")
+            eenheid_alternatief = input()
+            print("Voer het aantal kcal in:")
+            kcal_alternatief = int(input())
 
-                    recept.set_personen(aantal_personen)
+            ingredient_toegevoegd_alternatief = Ingredient(naam_ingredient_alternatief, hoeveelheid_alternatief, eenheid_alternatief, kcal_alternatief)
+            recept_toegevoegd.voeg_ingredient_toe(ingredient_toegevoegd_alternatief)
+    
+    while True:
+        print("Voer een stap in:")
+        beschrijving_stap = input()
+        
+        print("Wil je een tip toevoegen? (ja/nee)")
+        tip = ""
+        if input().lower() == "ja":
+            print("Voer de tip in:")
+            tip = input()
+        
+        recept_stap = Stap(beschrijving_stap, tip)
+        recept_toegevoegd.voeg_stap_toe(recept_stap)
+        
+        print("Wil je nog een stap toevoegen? (ja/nee)")
+        if input().lower() != "ja":
+            break
+    
+    receptenboek.voeg_recept_toe(recept_toegevoegd)
+    print(f"Recept '{naam_recept}' toegevoegd!")
 
-                    print(f"Dit is het recept voor {gekozen_recept}:")
-                    print(recept)
-                    
-                    command = input("Druk op enter om een ander recept te kiezen of typ 'stop' om te stoppen. ")
-                    if command == "stop":
-                        break
-                    else:
-                        continue
-
-        else:
-            command = input("Druk op enter om te starten")
-            if command == "":
-                started = True
-                continue
+def toon_recepten(receptenboek):
+    while True:
+        print("Dit zijn de recepten die je kan maken:")
         time.sleep(1)
+        print(receptenboek.get_recepten_namen())
+        gekozen_recept = input("Welk recept wil je maken? ")
+        recept = receptenboek.get_recept(gekozen_recept)
+        
+        if recept == None:
+            print("Dit recept bestaat niet.")
+            time.sleep(1)
+            command = input("Druk op enter om een ander recept te kiezen of typ 'stop' om te stoppen. ")
+            if command == "stop":
+                break
+            else:
+                continue
+        else:
+            time.sleep(1)
+            aantal_personen = int(input("Voor hoeveel personen wil je dit recept maken? "))
+
+            recept.set_personen(aantal_personen)
+
+            print(f"Dit is het recept voor {gekozen_recept}:")
+            print(recept)
+            
+            command = input("Wil je dit recept verwijderen? (ja/nee) ")
+            if command == "ja":
+                receptenboek.verwijder_recept(gekozen_recept)
+                print(f"Recept '{gekozen_recept}' verwijderd!")
+            else:
+                command = input("Druk op enter om een ander recept te kiezen of typ 'stop' om te stoppen. ")
+                if command == "stop":
+                    break
+                else:
+                    continue
+
+def main():
+    receptenboek = Receptenboek()
+    maak_receptenboek(receptenboek)
+
+    # Keuzemenu
+    print("Welkom bij het receptenboek!")
+    while True:
+        print("Kies een optie: toevoegen, tonen, exit")
+        keuze = input().lower()
+        if keuze == "toevoegen":
+            voeg_recept_toe(receptenboek)
+        elif keuze == "tonen":
+            toon_recepten(receptenboek) 
+        elif keuze == "exit":
+            break
+        else:
+            print("Foutieve invoer. Kies toevoegen, tonen of exit.")
+
+
 if __name__ == "__main__":
     main()
-    

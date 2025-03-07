@@ -6,7 +6,7 @@ from Stap import Stap
 def main():
     receptenboek = Receptenboek()
 
-    recept1 = Recept("Pasta", "1 portie pasta for a good boy")
+    recept1 = Recept("Pasta", "1 portie pasta")
     recept2 = Recept("Pizza Salami", "Pizza met salami")
 
     recept1.voeg_ingredient_toe(Ingredient("Pasta", "200", "gram"))
